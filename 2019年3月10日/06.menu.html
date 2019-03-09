@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+    <style>
+      * {
+        margin: 0;
+        box-sizing: border-box;
+        padding: 0;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+      }
+
+      h1,
+      h2,
+      h3,
+      h4,
+      h5,
+      h6,
+      a,
+      p,
+      span {
+        padding-bottom: 0.714em !important;
+        padding-top: 0.714em !important;
+        text-transform: uppercase;
+        letter-spacing: 0.1em;
+        font-weight: 400;
+        color: #ffffff;
+        font-weight: bold;
+        text-align: center;
+      }
+
+      footer {
+        bottom: 0;
+        right: 0;
+        left: 0;
+        margin: 0 auto;
+        position: fixed;
+        width: 100%;
+        background: #264653;
+        text-align: center;
+      }
+      footer .content {
+        border-radius: 5px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: space-evenly;
+        height: 80px;
+      }
+      footer .content .bottom {
+        padding: 0;
+        margin: 0;
+        top: 10%;
+      }
+      footer .content .bottom .beat {
+        color: red;
+        -webkit-animation: beat 0.3s infinite alternate;
+        animation: beat 0.3s infinite alternate;
+      }
+      footer .content .top {
+        font-size: 25px;
+      }
+      footer .content .top .fa-twitter:hover {
+        transition: 350ms ease-in-out;
+        color: #55acee;
+        -webkit-transform: scale(1.4);
+        transform: scale(1.4);
+      }
+      footer .content .top .fa-youtube:hover {
+        transition: 350ms ease-in-out;
+        color: #cd201f;
+        -webkit-transform: scale(1.4);
+        transform: scale(1.4);
+      }
+      footer .content .top .fa-instagram:hover {
+        transition: 350ms ease-in-out;
+        color: #e4405f;
+        -webkit-transform: scale(1.4);
+        transform: scale(1.4);
+      }
+      footer .content .top .fa-codepen:hover {
+        transition: 350ms ease-in-out;
+        color: #ffdd40;
+        -webkit-transform: scale(1.4);
+        transform: scale(1.4);
+      }
+      footer .content .top a {
+        padding: 10px;
+      }
+      footer .content .top i {
+        transition: 500ms ease-in-out;
+      }
+
+      body {
+        background: #264653;
+        font-family: 'Raleway', sans-serif;
+        text-align: center;
+      }
+
+      .noselect {
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+      }
+
+      @-webkit-keyframes beat {
+        to {
+          -webkit-transform: scale(1.4);
+          transform: scale(1.4);
+        }
+      }
+
+      @keyframes beat {
+        to {
+          -webkit-transform: scale(1.4);
+          transform: scale(1.4);
+        }
+      }
+      .artboard {
+        width: 100%;
+        height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: row;
+        flex-wrap: wrap;
+        position: absolute;
+      }
+      .artboard .overlay {
+        width: 140px;
+        height: 140px;
+        border: 5px solid #ffffff;
+        border-radius: 100%;
+        transition: 0.4s linear;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: row;
+        flex-wrap: wrap;
+      }
+      .artboard .overlay:hover {
+        border-color: #e76f51;
+        cursor: pointer;
+      }
+      .artboard .button {
+        width: 70px;
+        height: 10px;
+        border-radius: 100px;
+        background: #ffffff;
+        transition: 900ms 175ms cubic-bezier(0.6, -0.46, 0.21, 1.3);
+      }
+      .artboard .button:before,
+      .artboard .button:after {
+        content: '';
+        transition: 400ms cubic-bezier(1, -0.81, 0.17, 1.2);
+        width: 35px;
+        height: 10px;
+        display: flex;
+        background: #ffffff;
+        border-radius: 100px;
+        position: relative;
+      }
+      .artboard .button:before {
+        -webkit-transform-origin: right;
+        transform-origin: right;
+        top: -35px;
+      }
+      .artboard .button:after {
+        bottom: -24px;
+        -webkit-transform-origin: left;
+        transform-origin: left;
+        float: right;
+      }
+      .artboard .active {
+        background: #e76f51;
+        border-color: #e76f51;
+        -webkit-transform: rotate(270deg);
+        transform: rotate(270deg);
+      }
+      .artboard .active .button {
+        -webkit-transform: rotate(-45deg);
+        transform: rotate(-45deg);
+      }
+      .artboard .active .button:before {
+        -webkit-transform: rotate(-90deg);
+        transform: rotate(-90deg);
+      }
+      .artboard .active .button:after {
+        -webkit-transform: rotate(-90deg);
+        transform: rotate(-90deg);
+      }
+    </style>
+  </head>
+  <body>
+    <div class="artboard">
+      <div class="overlay"><div class="button"></div></div>
+    </div>
+    <footer>
+      <div class="content">
+        <div class="top">
+          <a target="_blank" href="https://www.instagram.com/akshaycodes/?hl=en"
+            ><i class="fab fa-instagram"></i></a
+          ><a target="_blank" href="https://twitter.com/akshaycodes/"
+            ><i class="fab fa-twitter"></i></a
+          ><a target="_blank" href="http://akshaycodes.com/youtube"
+            ><i class="fab fa-youtube"></i></a
+          ><a target="_blank" href="https://codepen.io/akshaycodes/"
+            ><i class="fab fa-codepen"></i
+          ></a>
+        </div>
+        <div class="bottom">
+          <a
+            >made with <i class="fas fa-heart beat"></i> by
+            <a target="_blank" href="https://codepen.io/akshaycodes/"
+              >Akshaycodes</a
+            ></a
+          >
+        </div>
+      </div>
+    </footer>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script>
+      var menu = $('.overlay')
+      menu.on('click', function() {
+        $(this).toggleClass('active')
+      })
+    </script>
+  </body>
+</html>
