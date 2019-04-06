@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+  </head>
+  <body></body>
+</html>
+<script>
+  // promise意思是承诺的意思,在js中主要是为了解决回调地狱.
+  /*比如,我们要想在家吃顿饭，是要经过三个步骤的:
+   1.洗菜做饭。
+   2.坐下来吃饭。
+   3.收拾桌子洗碗。
+  */
+  state = 1 // 我们定义一个成功的状态
+  // 第一步: 1.洗菜做饭。
+  function step1(resolve, reject) {
+    console.log('1.开始洗衣做饭')
+    if (state == 1) {
+      resolve('洗菜做饭--完成')
+    } else {
+      reject('洗菜做饭--失败')
+    }
+  }
+  // 第二步: 2.坐下来吃饭
+  function step2(resolve, reject) {
+    console.log('2.开始坐下来吃饭')
+    if (state == 1) {
+      resolve('坐下来吃饭--完成')
+    } else {
+      reject('坐下来吃饭--失败')
+    }
+  }
+  // 第三步:3.收拾桌子洗碗。
+  function step3(resolve, reject) {
+    console.log('3.开始收拾桌子洗碗。')
+    if (state == 1) {
+      resolve('收拾桌子洗碗--完成')
+    } else {
+      reject('收拾桌子洗碗--失败')
+    }
+  }
+  //Promise对象传入的是一个函数,三个步骤分别用三个then来表示
+  new Promise(step1)
+    .then(function(val) {
+      console.log(val) //打印"洗菜做饭--完成"
+      return new Promise(step2) //继续返回一个Promise对象
+    })
+    .then(function(val) {
+      console.log(val) //打印"收拾桌子洗碗--完成"
+      return new Promise(step3) //继续返回一个Promise对象
+    })
+    .then(function(val){
+        console.log(val);//"收拾桌子洗碗--完成"
+    })
+</script>

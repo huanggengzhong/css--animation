@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+  </head>
+  <body></body>
+</html>
+<script>
+  // 一.promise的初衷
+
+  // 请求A开始
+  // $.ajax({
+  //     success:function(res1){
+  //         // 请求B开始
+  //         $.ajax({
+  //             success:function(res2){
+  //                 // 请求C开始
+  //                 $.ajax({
+  //                     success:function(res3){
+  //                         console.log(res3);
+  //                     }
+  //                 })
+  //                 // 请求C结束
+  //             }
+  //         })
+  //          // 请求B结束
+  //     }
+  // })
+  // // 请求A结束
+
+  // Promise的基本写法
+
+  // let pro=new Promise(function(resolve,reject){
+  //     console.log('Promise');//创建后会立即执行,所以会打印Promise
+
+  // })
+
+//   let pro = new Promise(function(resolve, reject) {
+//     //初始化状态:pending
+//     if ('操作成功') {
+//       resolve()
+//       // resolve方法调用,状态为fulfilled
+//     } else {
+//       reject()
+//       // reject方法调用,状态为rejected
+//     }
+//   })
+
+//   // pro.then(function(res){
+//   // //操作成功的处理程序
+//   // },function(error){
+//   // // 操作失败的处理程序
+//   // })
+
+//   // pro.catch(function(error){
+//   //     //操作失败的处理程序
+//   // })
+
+//   pro.then(function(res) {
+//     //操作成功的处理程序
+//   }).catch(function(error) {
+//     // 操作失败的处理程序
+//   })
+
+// let pro =new Promise(function(resolve,reject){
+//     let condition =true;//假设condition的值为true
+//     if(condition){
+//         resolve('操作成功');
+//     }else{
+//         reject('操纵失败');
+//     }
+// })
+// pro.then(function(res){
+//     console.log(res);//最终打印:操作成功
+    
+// }).catch(function(error){
+//     console.log(error);
+    
+// })
+
+// let pro = new Promise(function(resolve,reject){
+
+// if(true){
+//     //调用操作成功方法
+//     resolve('操作成功');
+// }else{
+//     //调用操作异常方法
+//     reject('操作异常');
+// }
+// });
+
+// //用then处理操作成功，catch处理操作异常
+// pro.then(requestA)
+// .then(requestB)
+// .then(requestC)
+// .catch(requestError);
+
+// function requestA(){
+// console.log('请求A成功');
+// return '请求B，下一个就是你了';
+// }
+// function requestB(res){
+// console.log('上一步的结果：'+res);
+// console.log('请求B成功');
+// return '请求C，下一个就是你了';
+// }
+// function requestC(res){
+// console.log('上一步的结果：'+res);
+// console.log('请求C成功');
+// }
+// function requestError(){
+// console.log('请求失败');
+// }
+
+
+// let pro1=new Promise(
+//     function(resolve,reject){
+//         setTimeout(function(){
+//             resolve('实例1操作成功')
+//         },5000)
+//     }
+// )
+// let pro2=new Promise(
+//     function(resolve,reject){
+//         setTimeout(function(){
+//             resolve('实例2操作成功')
+//         },2000)
+//     }
+// )
+
+// Promise.all([pro1,pro2]).then(function(res){
+//     console.log(res);//5秒后打印:["实例1操作成功", "实例2操作成功"]
+    
+// })
+
+let pro1=new Promise(function(resolve,reject){
+    setTimeout(function(){
+        resolve('实例1操作成功');
+    },5000)
+})
+let pro2=new Promise(function(resolve,reject){
+    setTimeout(function(){
+        reject('实例2操作失败');
+    },2000)
+})
+Promise.race([pro1,pro2]).then(function(res){
+    console.log(res);
+    
+}).catch(function(error){
+    console.log(error);//2秒后直接打印:实例2操作失败
+    
+})
+</script>
