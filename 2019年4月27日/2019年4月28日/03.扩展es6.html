@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script type="text/javascript" src="./lib/babel.min.js"></script>
+</head>
+<body>
+    
+</body>
+</html>
+<script type="text/babel">
+// 数组:
+let arr =[]
+let arr1=[1,2,3]
+let arr2=[4,5,6]
+arr=[...arr1,...arr2]
+console.log(arr);//打印数组[1, 2, 3, 4, 5, 6]
+console.log(...arr);//打印每一个值
+console.log([...arr])//也是打印数组[1, 2, 3, 4, 5, 6],跟第一个一样
+// 对象:
+let obj={
+    name:"jack",
+    age:18
+}
+console.log(...obj);//对象不能这样打印,不导入babel会报错;但可以像下面这样打印
+// console.log({...obj});//打印{ name:"jack", age:18}
+</script>

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script type="text/javascript" src="./lib/react.development.js"></script>
+    <script type="text/javascript" src="./lib/react-dom.development.js"></script>
+    <script type="text/javascript" src="./lib/babel.min.js"></script>
+    <style lang="">
+        .active{
+            color:skyblue;
+        }
+    </style>
+</head>
+<body>
+    <div id="root">
+    </div>
+    <script  type="text/babel">
+    function  foo() {
+        // jsx本质上是对象
+        return <div>你好</div>
+        // return "<div>你好</div>"
+        
+        
+    }
+   
+    let fruit ="苹果";
+    let flag=true;
+
+
+    var arrs={
+        className:"active",
+        abchello:'你好'//自定义属性要小写,因为html一般都是小写
+    }
+    const element=(   
+    // <div {...arrs}>
+    <div {...arrs}>
+        // 在根目录下这里不生效,在根目录外面才生效
+        {/*这里的注释有效 */}
+        <h1 >hello world</h1>
+        <h2>{fruit}</h2> 
+        <h2>{foo()+'<div>hi</div>'}</h2>          
+        <h2>{flag?'是':'否'}</h2>
+        {/*<h2>{if(flag){}}</h2>{/*if语句不是表达式,不可以写*/}*/}
+        
+    </div>
+
+)
+ReactDOM.render(
+    element,
+    document.getElementById("root")
+
+)</script>
+    
+</body>
+</html>
